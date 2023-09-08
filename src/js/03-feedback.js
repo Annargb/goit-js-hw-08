@@ -7,7 +7,6 @@ form.addEventListener('submit', onFormSubmit);
 window.addEventListener('load', saveData);
 
 function saveData() {
-  // console.log(localStorage.getItem('feedback-form-state'));
   if (!localStorage.getItem('feedback-form-state')) {
     return;
   } else {
@@ -18,10 +17,17 @@ function saveData() {
       localStorage.getItem('feedback-form-state')
     ).message;
   }
-  localStorage.removeItem('feedback-form-state');
 }
 
-function onFormInput() {
+// const formValues = {};
+
+function onFormInput(event) {
+  // if (!event.target.value) {
+  //   formValues[event.target.name] = '';
+  // } else {
+  //   formValues[event.target.name] = event.target.value;
+  // }
+
   const email = form.elements.email.value;
   const message = form.elements.message.value;
 
@@ -42,9 +48,9 @@ function onFormSubmit(event) {
     alert('All fields must be filled!');
   } else {
     const object = localStorage.getItem('feedback-form-state');
+    form.reset();
     console.log(JSON.parse(object));
   }
 
-  // localStorage.removeItem('feedback-form-state');
-  form.reset();
+  localStorage.removeItem('feedback-form-state');
 }
