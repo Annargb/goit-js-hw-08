@@ -7,9 +7,7 @@ form.addEventListener('submit', onFormSubmit);
 window.addEventListener('load', saveData);
 
 function saveData() {
-  if (!localStorage.getItem('feedback-form-state')) {
-    return;
-  } else {
+  if (localStorage.getItem('feedback-form-state')) {
     form.elements.email.value =
       JSON.parse(localStorage.getItem('feedback-form-state')).email ?? '';
     form.elements.message.value =
