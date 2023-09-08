@@ -15,18 +15,19 @@ function saveData() {
   }
 }
 
-const formValues = {};
+// const formValues = {};
 
-function onFormInput(event) {
-  formValues[event.target.name] = event.target.value;
+function onFormInput() {
+  // console.log(event.target);
+  // formValues[event.target.name] = event.target.value;
 
-  // const email = form.elements.email.value;
-  // const message = form.elements.message.value;
+  const email = form.elements.email.value;
+  const message = form.elements.message.value;
 
-  // const formValues = {
-  //   email,
-  //   message,
-  // };
+  const formValues = {
+    email,
+    message,
+  };
 
   localStorage.setItem('feedback-form-state', JSON.stringify(formValues));
 }
