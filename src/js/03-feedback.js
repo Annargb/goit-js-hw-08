@@ -10,31 +10,26 @@ function saveData() {
   if (!localStorage.getItem('feedback-form-state')) {
     return;
   } else {
-    form.elements.email.value = JSON.parse(
-      localStorage.getItem('feedback-form-state')
-    ).email;
-    form.elements.message.value = JSON.parse(
-      localStorage.getItem('feedback-form-state')
-    ).message;
+    form.elements.email.value =
+      JSON.parse(localStorage.getItem('feedback-form-state')).email ?? '';
+    form.elements.message.value =
+      JSON.parse(localStorage.getItem('feedback-form-state')).message ?? '';
   }
 }
 
-// const formValues = {};
+const formValues = {};
 
 function onFormInput(event) {
-  // if (!event.target.value) {
-  //   formValues[event.target.name] = '';
-  // } else {
-  //   formValues[event.target.name] = event.target.value;
-  // }
+  formValues[event.target.name] = event.target.value;
 
-  const email = form.elements.email.value;
-  const message = form.elements.message.value;
+  // const email = form.elements.email.value;
+  // const message = form.elements.message.value;
 
-  const formValues = {
-    email,
-    message,
-  };
+  // const formValues = {
+  //   email,
+  //   message,
+  // };
+
   localStorage.setItem('feedback-form-state', JSON.stringify(formValues));
 }
 
